@@ -9,7 +9,7 @@ class NodeTest {
 
   // -------- WAVE 1 -------
 
-  @Test
+  @Test 
   void testListConstructorWithThreeValues() {
     // Arrange
     List<Integer> values = List.of(5, 7, 3);
