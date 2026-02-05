@@ -78,14 +78,14 @@ public class Node {
   List<Integer> result = new ArrayList<>();
 
     // the node starts at this
-    Node walker = this;
+    Node current = this;
     // while loop moves throught the pointers
-    while(walker != null) {
+    while(current != null) {
       // add the current node to the list
-      result.add(walker.value);
+      result.add(current.value);
       // moves to the next node
-      walker = walker.next;
+      current = current.next;
     }
-    return null;
+    return result;
   }
 }

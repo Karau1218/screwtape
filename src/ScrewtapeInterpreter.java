@@ -140,7 +140,7 @@ if (!stack.isEmpty()) {
     throw new IllegalArgumentException("Unmatched opening bracket(s)");
 }
 
-    return null;
+    return map;
   }
 
   /**
