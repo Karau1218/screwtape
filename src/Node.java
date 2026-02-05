@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -73,6 +74,18 @@ public class Node {
    */
   public List<Integer> toList() {
     // TODO: Implement this
+    // Used ArrayList Option
+  List<Integer> result = new ArrayList<>();
+
+    // the node starts at this
+    Node walker = this;
+    // while loop moves throught the pointers
+    while(walker != null) {
+      // add the current node to the list
+      result.add(walker.value);
+      // moves to the next node
+      walker = walker.next;
+    }
     return null;
   }
 }
