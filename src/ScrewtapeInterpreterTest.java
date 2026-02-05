@@ -23,6 +23,40 @@ class ScrewtapeInterpreterTest {
     assertEquals(expectedMap, actualMap);
   }
 
+   @Test
+    void testBracketMapMultipleLoops() {
+        ScrewtapeInterpreter interpreter = new ScrewtapeInterpreter();
+        String program = "[+++][---]<<[+]";
+
+        Map<Integer, Integer> map = interpreter.bracketMap(program);
+
+        assertEquals(3, map.size());
+        assertEquals(0, map.get(4));
+        assertEquals(5, map.get(9));
+        assertEquals(12, map.get(14));
+    }
+    // Unmatched closing bracket
+     @Test
+    void testBracketMapUnmatchedClosingBracket() {
+        ScrewtapeInterpreter interpreter = new ScrewtapeInterpreter();
+        String program = "[+]";  // valid loop
+        String brokenProgram = program + "]"; // extra closing bracket
+
+        assertThrows(IllegalArgumentException.class,
+                () -> interpreter.bracketMap(brokenProgram),
+                "Expected IllegalArgumentException for unmatched closing bracket");
+    }
+
+    // Unmatched opening bracket
+    @Test
+    void testBracketMapUnmatchedOpeningBracket() {
+        ScrewtapeInterpreter interpreter = new ScrewtapeInterpreter();
+        String program = "[++[--]"; // missing closing bracket
+
+        assertThrows(IllegalArgumentException.class,
+                () -> interpreter.bracketMap(program),
+                "Expected IllegalArgumentException for unmatched opening bracket");
+    }
   // TODO: Implement more tests for bracketMap
   // At a bare minimum, implement the other examples from the Javadoc and at least one more you come up with
 
@@ -86,7 +120,7 @@ class ScrewtapeInterpreterTest {
   void testLeftAndAdd() {
     // Arrange
     ScrewtapeInterpreter interpreter = new ScrewtapeInterpreter();
-    String program = "<<++";
+    String program = "<<++"; 
 
     // Act
     interpreter.execute(program);
